@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="Strobe Light Generator" name="title">
+<title>Stronboscope</title>
+<body>
+      <input type="button" value=START>
+      <p>La machine est arrêtée.</p>
+</body>     
+<script>
+
+var btn = document.querySelector('input');
+var txt = document.querySelector('p');
+var bodyElement = document.querySelector("body");
+var i;
+var color =["black","white","yellow","red","orange","green","pink","blue","grey"];
+var timer;
+
+btn.addEventListener('click', updateBtn);
+
+function Random(max){
+  return Math.floor(Math.random() * Math.floor(max));
+
+}
+function colorchange(){
+  i= Random(color.length);
+bodyElement.style.background=color[i];
+timer= setTimeout(colorchange,5);
+}
+
+function updateBtn() {
+  if (btn.value === "START") {
+    btn.value = "STOP";
+    txt.textContent = 'La machine est démarrée !';
+    colorchange()
+  } else {
+    (btn.value = "START")
+    txt.textContent = 'La machine est arrêtée.';
+  clearTimeout(timer)
+  }
+}
+
+</script>
+</body>
+</html>
